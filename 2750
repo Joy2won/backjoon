@@ -1,0 +1,45 @@
+/*N개의 수가 주어졌을 때, 이를 오름차순으로 정렬하는 프로그램을 작성하시오.
+
+입력
+첫째 줄에 수의 개수 N(1 ≤ N ≤ 1,000)이 주어진다. 둘째 줄부터 N개의 줄에는 수가 주어진다. 이 수는 절댓값이 1,000보다 작거나 같은 정수이다. 수는 중복되지 않는다.
+
+출력
+첫째 줄부터 N개의 줄에 오름차순으로 정렬한 결과를 한 줄에 하나씩 출력한다.
+
+선택정렬 이용해 풀이*/
+
+#include <iostream>
+
+using namespace std;
+
+int N, index, temp;
+int array[1000];
+
+int main(){
+    cin>>N;
+    
+    for (int i=0;i<N;i++){
+        cin>>array[i];
+    }
+    
+    //선택정렬
+    
+    for (int i=0;i<N;i++){
+        int min=1001;
+        for (int j=i;j<N;j++){
+            if (array[j]<min){
+                min=array[j];
+                index=j;
+            }
+        }
+        temp=array[i];
+        array[i]=array[index];
+        array[index]=temp;
+    }
+    
+    for (int i=0;i<N;i++){
+        cout<<array[i]<<'\n';
+    }
+    
+    return 0;
+}
